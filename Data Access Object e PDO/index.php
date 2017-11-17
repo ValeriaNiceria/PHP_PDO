@@ -2,10 +2,10 @@
 
 require_once("config.php");
 
-$sql = new Sql();
+$cliente = new Cliente();
 
-$clientes = $sql->select("SELECT * FROM clientes");
+$cliente->loadById(18);
 
-//Retorna a representação JSON de um valor
-echo json_encode($clientes);
+echo $cliente;
+
 ?>
