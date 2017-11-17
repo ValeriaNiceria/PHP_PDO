@@ -84,6 +84,53 @@ class Cliente {
             "Data Nascimento"=>$this->getDataNasc()->format("d/m/y")
         ));
     }
+
+
+    //Carregar uma lista de Clientes 
+    public static function getList(){
+
+        $sql = new Sql();
+
+        return $sql->select("SELECT * FROM clientes ORDER BY id_cliente");
+    }
+
+    
+    //Buscando Cliente pelo nome
+    public static function search($nome){
+
+        $sql = new Sql();
+
+        return $sql->select("SELECT * FROM clientes WHERE nome_cliente LIKE :SEARCH ORDER BY id_cliente", array(
+            ':SEARCH'=>"%".$nome."%"
+        ));
+    }
+
+
+    //Fazendo um login 
+    public function login($email, $senha){
+        
+        $sql = new Sql();
+
+        $result = $sql->select("SELECT * FROM clientes WHERE email_cliente = :EMAIL AND senha_cliente = :SENHA", array(
+            ":EMAIL"=>$email,
+            ":SENHA"=>$senha
+        ));
+
+        if(count($result) > 0){
+
+            $row = $result[0];
+
+            $this->setId($row['id_cliente']);
+            $this->setNome($row['nome_cliente']);
+            $this->setEmail($row['email_cliente']);
+            $this->setTelefone($row['telefone_cliente']);
+            $this->setSenha($row['senha_cliente']);
+            $this->setDataNasc(new DateTime($row['data_nasc_cliente']));
+
+        }else{
+            throw new Exception("Login e/ou senha inválidos.");
+        }
+    }
 }
 
 ?> 
