@@ -19,10 +19,16 @@ require_once("config.php");
 
 
 //Fazendo um login
-$cliente = new Cliente();
+//$cliente = new Cliente();
+//$cliente->login("madalena@madalena.com","090909");
+//echo ($cliente);
 
-$cliente->login("madalena@madalena.com","090909");
 
-echo ($cliente);
+//Inserindo cliente no banco de dados
+$cliente = new Cliente("Vinicios", "vinicios@vinicios.com", "(31)3333-3333", "333333", "2000-03-30");
+
+$cliente->insert();
+
+echo $cliente;
 
 ?>

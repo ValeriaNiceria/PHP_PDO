@@ -62,14 +62,7 @@ class Cliente {
         //Validando
         if(count($results) > 0){
 
-            $row = $results[0];
-
-            $this->setId($row['id_cliente']);
-            $this->setNome($row['nome_cliente']);
-            $this->setEmail($row['email_cliente']);
-            $this->setTelefone($row['telefone_cliente']);
-            $this->setSenha($row['senha_cliente']);
-            $this->setDataNasc(new DateTime($row['data_nasc_cliente']));
+            $this->setData($results[0]);
         }
 
     }
@@ -118,18 +111,48 @@ class Cliente {
 
         if(count($result) > 0){
 
-            $row = $result[0];
-
-            $this->setId($row['id_cliente']);
-            $this->setNome($row['nome_cliente']);
-            $this->setEmail($row['email_cliente']);
-            $this->setTelefone($row['telefone_cliente']);
-            $this->setSenha($row['senha_cliente']);
-            $this->setDataNasc(new DateTime($row['data_nasc_cliente']));
-
+            $this->setData($result[0]);
         }else{
             throw new Exception("Login e/ou senha inválidos.");
         }
+    }
+
+    //Muda os dados do cliente
+    public function setData($data){
+        $this->setId($data['id_cliente']);
+        $this->setNome($data['nome_cliente']);
+        $this->setEmail($data['email_cliente']);
+        $this->setTelefone($data['telefone_cliente']);
+        $this->setSenha($data['senha_cliente']);
+        $this->setDataNasc(new DateTime($data['data_nasc_cliente']));
+    }
+
+    //Inserindo cliente ao banco de dados
+    public function insert(){
+        
+        $sql = new Sql();
+
+        //Criando uma procedure no 'mysql' que será chamada 'CALL' no php
+        $results = $sql->select("CALL sp_clientes_insert(:NOME, :EMAIL, :TELEFONE, :SENHA, :DATA_NASC)", array(
+            ':NOME'=>$this->getNome(),
+            ':EMAIL'=>$this->getEmail(),
+            ':TELEFONE'=>$this->getTelefone(),
+            ':SENHA'=>$this->getSenha(),
+            ':DATA_NASC'=>$this->getDataNasc()
+        ));
+
+        if(count($results) > 0){
+            $this->setData($results[0]);
+        }
+    }
+
+    //metodo construtor para adicionar os dados do cliente
+    public function __construct($nome = "", $email = "", $telefone = "", $senha = "", $dataNasc = ""){
+        $this->setNome($nome);
+        $this->setEmail($email);
+        $this->setTelefone($telefone);
+        $this->setSenha($senha);
+        $this->setDataNasc($dataNasc);
     }
 }
 
