@@ -31,14 +31,17 @@ require_once("config.php");
 
 
 //Alterando os dados do cliente
+//$cliente = new Cliente();
+//$cliente->loadById(22);
+//$cliente->update("Madalena","madalena@madalena.com","(31)3333-3333","3333","1990-10-09");
+//$cliente->loadById(22);
+//echo $cliente;
+
+//Deletando os dados do cliente
 $cliente = new Cliente();
-
-$cliente->loadById(22);
-
-$cliente->update("Madalena","madalena@madalena.com","(31)3333-3333","3333","1990-10-09");
-
-$cliente->loadById(22);
-
+$cliente->loadById(18);
+$cliente->delete();
 echo $cliente;
+echo "<p>Cliente deletado com sucesso!</p>";
 
 ?>

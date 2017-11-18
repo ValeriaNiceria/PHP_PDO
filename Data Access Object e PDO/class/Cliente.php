@@ -149,7 +149,7 @@ class Cliente {
 
     //Alterando os dados do cliente
     public function update($nome, $email, $telefone, $senha, $dataNasc){
-        
+
         $this->setNome($nome);
         $this->setEmail($email);
         $this->setTelefone($telefone);
@@ -166,6 +166,25 @@ class Cliente {
             ':DATA_NASC'=>$this->getDataNasc(),
             ':ID'=>$this->getId()   
         ));
+    }
+
+
+    //Deletando o cliente do banco de dados
+    public function delete(){
+
+        $sql = new Sql();
+
+        $sql->query("DELETE FROM clientes WHERE id_cliente = :ID", array(
+            ':ID'=>$this->getId()
+        ));
+
+        //zerando as informações na memória do objeto
+        $this->setId(0);
+        $this->setNome("");
+        $this->setEmail("");
+        $this->setTelefone("");
+        $this->setSenha("");
+        $this->setDataNasc(new DateTime());
     }
 
 
