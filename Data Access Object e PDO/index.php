@@ -25,9 +25,19 @@ require_once("config.php");
 
 
 //Inserindo cliente no banco de dados
-$cliente = new Cliente("Vinicios", "vinicios@vinicios.com", "(31)3333-3333", "333333", "2000-03-30");
+//$cliente = new Cliente("Vinicios", "vinicios@vinicios.com", "(31)3333-3333", "333333", "2000-03-30");
+//$cliente->insert();
+//echo $cliente;
 
-$cliente->insert();
+
+//Alterando os dados do cliente
+$cliente = new Cliente();
+
+$cliente->loadById(22);
+
+$cliente->update("Madalena","madalena@madalena.com","(31)3333-3333","3333","1990-10-09");
+
+$cliente->loadById(22);
 
 echo $cliente;
 

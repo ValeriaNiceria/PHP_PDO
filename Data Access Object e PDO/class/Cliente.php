@@ -146,6 +146,29 @@ class Cliente {
         }
     }
 
+
+    //Alterando os dados do cliente
+    public function update($nome, $email, $telefone, $senha, $dataNasc){
+        
+        $this->setNome($nome);
+        $this->setEmail($email);
+        $this->setTelefone($telefone);
+        $this->setSenha($senha);
+        $this->setDataNasc($dataNasc);
+
+        $sql = new Sql();
+
+        $sql->query("UPDATE clientes SET nome_cliente = :NOME, email_cliente = :EMAIL, telefone_cliente = :TELEFONE, senha_cliente = :SENHA, data_nasc_cliente = :DATA_NASC WHERE id_cliente = :ID", array(
+            ':NOME'=>$this->getNome(),
+            ':EMAIL'=>$this->getEmail(),
+            ':TELEFONE'=>$this->getTelefone(),
+            ':SENHA'=>$this->getSenha(),
+            ':DATA_NASC'=>$this->getDataNasc(),
+            ':ID'=>$this->getId()   
+        ));
+    }
+
+
     //metodo construtor para adicionar os dados do cliente
     public function __construct($nome = "", $email = "", $telefone = "", $senha = "", $dataNasc = ""){
         $this->setNome($nome);
