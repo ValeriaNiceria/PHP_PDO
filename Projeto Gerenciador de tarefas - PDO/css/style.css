@@ -45,3 +45,15 @@ table td {
     color: #000;
     text-align: center;
 }
+
+.total {
+    float: right;
+    color: #000;
+    font-size: 14px;
+}
+
+.aviso_registro {
+    text-align: center;
+    font-size: 14px;
+}
+
