@@ -43,6 +43,8 @@ if (!is_array($tarefa)) {
         <fieldset>
             <legend>Edição tarefa</legend>
 
+            <input type="hidden" name="tarefa_id" value="<?php echo $tarefa['tarefa_id']; ?>">
+
             <label for="nome">Tarefa</label>
             <input type="text" name="nome" value="<?php echo $tarefa['tarefa_nome']; ?>"/>
 
@@ -66,7 +68,7 @@ if (!is_array($tarefa)) {
             </fieldset>
 
             <label for="concluida">Concluída</label>
-            <input type="checkbox" name="concluida"
+            <input type="checkbox" name="concluida" value="1"
             <?php echo ($tarefa['tarefa_concluida'] == 1) ? 'checked' : ''; ?>/>
 
             <!--Botão para cancelar a edição-->
