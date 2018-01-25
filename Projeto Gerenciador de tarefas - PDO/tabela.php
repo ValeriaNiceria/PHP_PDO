@@ -1,6 +1,7 @@
 <?php
 
-include("conexao.php");
+include ("conexao.php");
+include ("helpers.php");
 
 //SQL para selecionar os registros
 $sql = "SELECT * FROM tarefas";
@@ -36,9 +37,9 @@ $total = $stmt_count->fetchColumn();
     <tr>
         <td><?php echo $tarefa['tarefa_nome']; ?></td>
         <td><?php echo $tarefa['tarefa_descricao']; ?></td>
-        <td><?php echo $tarefa['tarefa_prazo']; ?></td>
-        <td><?php echo $tarefa['tarefa_prioridade']; ?></td>
-        <td><?php echo $tarefa['tarefa_concluida']; ?></td>
+        <td><?php echo traduz_data_para_exibir($tarefa['tarefa_prazo']); ?></td>
+        <td><?php echo traduz_prioridade($tarefa['tarefa_prioridade']); ?></td>
+        <td><?php echo traduz_concluida($tarefa['tarefa_concluida']); ?></td>
         
         <td>
             <a href="editar.php?tarefa_id=<?php echo $tarefa['id']; ?>">Editar</a>

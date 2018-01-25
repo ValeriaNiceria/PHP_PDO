@@ -20,7 +20,8 @@ label {
 }
 
 input[type=text],
-textarea {
+textarea, 
+input[type=date]{
     width: 100%;
     border: 1px solid #333;
     padding: 3px;
