@@ -42,8 +42,8 @@ $total = $stmt_count->fetchColumn();
         <td><?php echo traduz_concluida($tarefa['tarefa_concluida']); ?></td>
         
         <td>
-            <a href="editar.php?tarefa_id=<?php echo $tarefa['id']; ?>">Editar</a>
-            <a href="deletar.php?tarefa_id=<?php echo $tarefa['id']; ?>" onclick="return confirm('Tem certeza de que deseja remover a tarefa?')">Remover</a>
+            <a href="formulario_edicao.php?tarefa_id=<?php echo $tarefa['tarefa_id']; ?>">Editar</a>
+            <a href="deletar.php?tarefa_id=<?php echo $tarefa['tarefa_id']; ?>" onclick="return confirm('Tem certeza de que deseja remover a tarefa?')">Remover</a>
         </td>
     </tr>
     <?php endwhile; ?>

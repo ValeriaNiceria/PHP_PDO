@@ -58,3 +58,17 @@ table td {
     font-size: 14px;
 }
 
+.tarefa {
+    text-decoration: underline;
+}
+
+.cancelar {
+    color: rgb(5, 5, 5);
+    float: right;
+    text-decoration: none;
+    background-color: #afe2d7;
+    border-radius: 5px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    margin-left: 7px;
+}
