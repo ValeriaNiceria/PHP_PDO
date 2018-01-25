@@ -30,3 +30,18 @@ textarea {
 input[type=submit] {
     float: right;
 }
+
+table {
+    width: 100%;
+}
+
+table th {
+    font-size: 18px;
+    background-color: #6bbdab;
+}
+
+table td {
+    border-bottom: 1px solid #333;
+    color: #000;
+    text-align: center;
+}

@@ -14,7 +14,7 @@
 
         <?php include('formulario.php'); ?>
 
+        <?php include('tabela.php'); ?>
+
     </div>
     
-</body>
-</html>
